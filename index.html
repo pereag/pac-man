@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pac-man</title>
+</head>
+    <body>
+        <div class="pac-man">
+
+        </div>
+    </body>
+</html>
+
+<style>
+    body {
+        width: 100vW;
+        height: 100Vh;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        overflow-x: hidden;
+        background: url("pacmanBackground.jpg");
+        backdrop-filter: blur(10px);
+        overflow-y: hidden;
+    }
+    @keyframes pacmanTranslation {
+        0% {
+            left: -10vw;
+        }
+        100% {
+            left: 120vw;
+        }
+    }
+
+    @keyframes eat {
+    0% {
+        clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
+    }
+    25% {
+        clip-path: polygon(100% 60%, 44% 48%, 100% 40%);
+    }
+    50% {
+        clip-path: polygon(100% 50%, 44% 48%, 100% 50%);
+    }
+    75% {
+        clip-path: polygon(100% 59%, 44% 48%, 100% 35%);
+    }
+    100% {
+        clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
+    }
+    }
+
+    .pac-man {
+        width: 10vH;
+        height: 10vH;
+        animation: pacmanTranslation 3s linear infinite;
+        background-color: rgb(255, 208, 0);
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .pac-man::after {
+        content: "";
+        width: 15%;
+        height: 15%;
+        background-color: black;
+        border-radius: 50vh;
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(calc(-50% + 2%));
+    }
+    .pac-man::before {
+        animation:  eat 0.4s linear infinite;
+        content: "";
+        width: 100%;
+        height: 100%;
+        clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
+        background-color: black;
+        position: absolute;
+    }
+</style>
